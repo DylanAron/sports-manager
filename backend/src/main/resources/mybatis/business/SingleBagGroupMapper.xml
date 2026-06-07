@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.SingleBagGroupMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.SingleBagGroup">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="rateOfReturn" column="rate_of_return" jdbcType="VARCHAR"/>
+        <result property="total" column="total" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="status" column="status" jdbcType="TINYINT"/>
+        <result property="payCode" column="pay_code" jdbcType="VARCHAR"/>
+        <result property="leagueNames" column="league_names" jdbcType="OTHER"/>
+        <result property="matchDate" column="match_date" jdbcType="DATE"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,rate_of_return,total,
+        create_time,status,pay_code,league_names,
+        match_date
+    </sql>
+    <select id="selectByDaysAgo" resultType="com.soccer.project.business.entity.po.SingleBagGroup">
+        SELECT id, total, match_date, pay_code
+        FROM t_single_bag_group
+        WHERE `status` = 1
+          AND match_date >= DATE_SUB(CURRENT_DATE(), INTERVAL #{days} DAY);
+    </select>
+</mapper>

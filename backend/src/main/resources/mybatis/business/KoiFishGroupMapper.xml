@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.KoiFishGroupMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.KoiFishGroup">
+            <id property="id" column="id" />
+            <result property="payCode" column="pay_code" />
+            <result property="matchDate" column="match_date" />
+            <result property="updateTime" column="update_time" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,pay_code,match_date,update_time,create_time
+    </sql>
+</mapper>

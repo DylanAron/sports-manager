@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.soccer.project.business.mapper.ExpertMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.Expert">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="avatar" jdbcType="VARCHAR" property="avatar"/>
+        <result column="hit_text" jdbcType="VARCHAR" property="hitText"/>
+        <result column="continue_num" jdbcType="INTEGER" property="continueNum"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , `name`,avatar, hit_text, continue_num,status,sort, update_time, create_time
+    </sql>
+    <select id="selectByName" resultType="com.soccer.project.business.entity.po.Expert">
+        SELECT <include refid="Base_Column_List" /> from t_expert
+        where  `name`=#{name}
+
+    </select>
+</mapper>

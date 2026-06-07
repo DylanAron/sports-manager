@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.SchemeMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.Scheme">
+        <id property="id" column="id"/>
+        <result property="expertId" column="expert_id"/>
+        <result property="homeName" column="home_name"/>
+        <result property="guestName" column="guest_name"/>
+        <result property="leagueName" column="league_name"/>
+        <result property="matchTime" column="match_time"/>
+        <result property="publishTime" column="publish_time"/>
+        <result property="likeNum" column="like_num"/>
+        <result property="status" column="status"/>
+        <result property="type" column="type"/>
+        <result property="playType" column="play_type"/>
+        <result property="ballNum" column="ball_num"/>
+        <result property="oddsList" column="odds_list"/>
+        <result property="isHit" column="is_hit"/>
+        <result property="recommendIndex" column="recommend_index"/>
+        <result property="hitIndex" column="hit_index"/>
+        <result property="payCode" column="pay_code"/>
+        <result property="content" column="content"/>
+        <result property="fullScore" column="full_score"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="createTime" column="create_time"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,expert_id,home_name,guest_name,league_name,match_time,
+        publish_time,like_num,status,`type`,play_type,ball_num,
+        odds_list,is_hit,recommend_index,pay_code,content,full_score,update_time,
+        create_time
+    </sql>
+    <select id="selectH5ByPage" resultType="com.soccer.project.h5.entity.vo.SchemeListRespVo">
+        SELECT s.id,s.league_name, s.home_name, s.guest_name,match_time,s.publish_time ,s.like_num,s.is_hit,recommend_index,
+               e.id as expertId,e.`name` as expertName,e.avatar as expertAvatar,e.continue_num ,e.hit_text  from t_scheme s LEFT JOIN t_expert e on s.expert_id=e.id
+        where s.`status`=1 and s.type=#{scheme.type} ORDER BY match_time desc, publish_time desc
+    </select>
+</mapper>

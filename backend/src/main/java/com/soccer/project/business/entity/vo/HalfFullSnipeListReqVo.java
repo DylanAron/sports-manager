@@ -1,0 +1,28 @@
+package com.soccer.project.business.entity.vo;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import org.springframework.validation.annotation.Validated;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+/**
+ * 半全场狙击 列表请求参数
+ */
+@Validated
+@Data
+public class HalfFullSnipeListReqVo implements Serializable {
+    /**
+     * 创建日期
+     */
+    @JsonFormat(shape =JsonFormat.Shape.STRING,   pattern = "yyyy-MM-dd")
+    private LocalDate matchDate ;
+
+    /**
+     * 联赛名称
+     */
+    private String  leagueName;
+}

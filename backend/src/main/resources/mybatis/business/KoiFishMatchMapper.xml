@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.KoiFishMatchMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.KoiFishMatch">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="leagueName" column="league_name" jdbcType="VARCHAR"/>
+            <result property="matchTime" column="match_time" jdbcType="TIMESTAMP"/>
+            <result property="matchStatus" column="match_status" jdbcType="TINYINT"/>
+            <result property="matchDate" column="match_date" jdbcType="DATE"/>
+            <result property="serialize" column="serialize" jdbcType="VARCHAR"/>
+            <result property="homeName" column="home_name" jdbcType="VARCHAR"/>
+            <result property="guestName" column="guest_name" jdbcType="VARCHAR"/>
+            <result property="fullScore" column="full_score" jdbcType="VARCHAR"/>
+            <result property="recommendContent" column="recommend_content" jdbcType="OTHER"/>
+            <result property="isHit" column="is_hit" jdbcType="TINYINT"/>
+            <result property="hitIndex" column="hit_index" jdbcType="TINYINT"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,league_name,match_time,
+        match_status,match_date,serialize,home_name,
+        guest_name,full_score,recommend_content,
+        is_hit,hit_index,update_time,
+        create_time
+    </sql>
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.AnalysisMapper">
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.Analysis">
+        <id property="id" column="id" />
+        <result property="leagueLogo" column="league_logo" />
+        <result property="leagueName" column="league_name" />
+        <result property="homeLogo" column="home_logo" />
+        <result property="homeName" column="home_name" />
+        <result property="awayLogo" column="away_logo" />
+        <result property="awayName" column="away_name" />
+        <result property="matchTime" column="match_time" />
+        <result property="scoreResult" column="score_result" />
+        <result property="content" column="content" />
+        <result property="createTime" column="create_time" />
+    </resultMap>
+    <sql id="Base_Column_List">id,league_logo,league_name,home_logo,home_name,away_logo,away_name,match_time,score_result,content,create_time</sql>
+</mapper>

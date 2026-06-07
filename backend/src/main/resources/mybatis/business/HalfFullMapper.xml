@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.HalfFullMapper">
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.HalfFull">
+            <id property="id" column="id" />
+            <result property="leagueName" column="league_name" />
+            <result property="leagueLogo" column="league_logo" />
+            <result property="homeName" column="home_name" />
+            <result property="homeLogo" column="home_logo" />
+            <result property="awayName" column="away_name" />
+            <result property="awayLogo" column="away_logo" />
+            <result property="halfScore" column="half_score" />
+            <result property="fullScore" column="full_score" />
+            <result property="recommendContent" column="recommend_content" />
+            <result property="isTodayData" column="is_today_data" />
+            <result property="isHit" column="is_hit" />
+            <result property="matchDate" column="match_date" />
+            <result property="updateTime" column="update_time" />
+            <result property="createTime" column="create_time" />
+    </resultMap>
+    <sql id="Base_Column_List">id,league_name,league_logo,home_name,home_logo,away_name,away_logo,half_score,full_score,recommend_content,is_today_data,is_hit,match_date</sql>
+</mapper>

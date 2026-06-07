@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soccer.project.business.mapper.SingleBagMatchMapper">
+
+    <resultMap id="BaseResultMap" type="com.soccer.project.business.entity.po.SingleBagMatch">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="groupId" column="group_id" jdbcType="INTEGER"/>
+            <result property="leagueName" column="league_name" jdbcType="VARCHAR"/>
+            <result property="matchTime" column="match_time" jdbcType="TIMESTAMP"/>
+            <result property="matchStatus" column="match_status" jdbcType="TINYINT"/>
+            <result property="serialize" column="serialize" jdbcType="VARCHAR"/>
+            <result property="homeName" column="home_name" jdbcType="VARCHAR"/>
+            <result property="guestName" column="guest_name" jdbcType="VARCHAR"/>
+            <result property="halfScore" column="half_score" jdbcType="VARCHAR"/>
+            <result property="fullScore" column="full_score" jdbcType="VARCHAR"/>
+            <result property="recommendContent" column="recommend_content" jdbcType="OTHER"/>
+            <result property="isHit" column="is_hit" jdbcType="TINYINT"/>
+            <result property="hitIndex" column="hit_index" jdbcType="TINYINT"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,group_id,league_name,
+        match_time,match_status,serialize,
+        home_name,guest_name,half_score,
+        full_score,recommend_content,is_hit,
+        hit_index,update_time,create_time
+    </sql>
+
+
+    <insert id="insertOrUpdateBatch">
+        INSERT INTO t_single_bag_match
+        (id,group_id,league_name,match_time,match_status,serialize,home_name,guest_name,half_score,full_score,recommend_content,
+        is_hit,hit_index
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id},#{item.groupId},#{item.leagueName},#{item.matchTime},#{item.matchStatus},#{item.serialize},
+            #{item.homeName},#{item.guestName},#{item.halfScore},#{item.fullScore},#{item.recommendContent}
+            ,#{item.isHit} ,#{item.hitIndex}
+            )
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        group_id=VALUES(group_id),
+        league_name=VALUES(league_name),
+        match_time=VALUES(match_time),
+        match_status=VALUES(match_status),
+        serialize=VALUES(serialize),
+        home_name=VALUES(home_name),
+        guest_name=VALUES(guest_name),
+        half_score=VALUES(half_score),
+        full_score=VALUES(full_score),
+        recommend_content=VALUES(recommend_content),
+        is_hit=VALUES(is_hit),
+        hit_index=VALUES(hit_index);
+    </insert>
+</mapper>

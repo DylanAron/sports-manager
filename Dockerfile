@@ -38,10 +38,12 @@ WORKDIR /app
 # 从构建阶段复制最终 JAR
 COPY --from=backend-builder /build/backend/target/soccer.jar app.jar
 
-# 创建日志目录
-RUN mkdir -p /app/logs
+# 安装中文字体（kaptcha 验证码需要）
+RUN apk add --no-cache fontconfig ttf-dejavu && \
+    mkdir -p /app/logs && \
+    rm -rf /var/cache/apk/*
 
-EXPOSE 8080
+EXPOSE 8081
 
 # 默认 JVM 参数和 Spring 环境
 ENV JAVA_OPTS="-Xms512m -Xmx1024m"

@@ -1,0 +1,13 @@
+**/.git
+**/.gitignore
+**/.gitkeep
+**/.svn
+**/.idea
+**/node_modules
+**/dist
+**/target
+**/.DS_Store
+**/*.md
+**/*.bat
+**/logs
+**/docker-compose*

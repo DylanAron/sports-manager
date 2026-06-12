@@ -21,6 +21,7 @@ public class Score implements Serializable {
     private String awayName;
     private String awayLogo;
     private String recommendContent;
+    private String result;
     private Integer isTodayData;
     private Integer isHit;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

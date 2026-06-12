@@ -422,4 +422,21 @@ CREATE TABLE `t_single_bag_match`  (
 INSERT INTO `t_single_bag_match` VALUES (1, 19, '瑞典甲', '2025-04-15 16:00:00', 1, '北单001', '奥雷布洛', '赫尔辛堡', '0-0', '0-2', '[\"赫尔辛堡 +0.5\"]', 1, 0, '2025-04-16 13:56:13', '0000-00-00 00:00:00');
 INSERT INTO `t_single_bag_match` VALUES (2, 19, '墨西联', '2025-04-16 05:55:14', 1, '北单008', '瓜达拉哈拉', '普埃布拉', '1-0', '1-0', '[\"普埃布拉\"]', 0, NULL, '2025-04-16 13:56:13', '0000-00-00 00:00:00');
 
+-- ----------------------------
+-- Table structure for t_app_activation
+-- ----------------------------
+DROP TABLE IF EXISTS `t_app_activation`;
+CREATE TABLE `t_app_activation` (
+  `id`          int          NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `device_id`   varchar(128) NOT NULL COMMENT '设备ID (ANDROID_ID / IDFV)',
+  `market_id`   tinyint      NOT NULL DEFAULT 1 COMMENT '市场ID: 1=百度 2=华为 3=小米 4=应用宝 5=Oppo 6=Vivo 7=360 99=其他',
+  `package_id`  varchar(64)  NOT NULL COMMENT '渠道包ID',
+  `report_time` datetime     NOT NULL COMMENT '激活上报时间',
+  `create_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uk_device_id` (`device_id`) USING BTREE COMMENT '设备ID唯一索引',
+  KEY `idx_report_time` (`report_time`) USING BTREE COMMENT '上报时间索引'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='App激活记录表';
+
 SET FOREIGN_KEY_CHECKS = 1;

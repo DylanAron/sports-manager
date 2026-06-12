@@ -11,6 +11,7 @@
             <result property="awayLogo" column="away_logo" />
             <result property="halfScore" column="half_score" />
             <result property="fullScore" column="full_score" />
+            <result property="result" column="result" />
             <result property="recommendContent" column="recommend_content" />
             <result property="isTodayData" column="is_today_data" />
             <result property="isHit" column="is_hit" />
@@ -18,5 +19,5 @@
             <result property="updateTime" column="update_time" />
             <result property="createTime" column="create_time" />
     </resultMap>
-    <sql id="Base_Column_List">id,league_name,league_logo,home_name,home_logo,away_name,away_logo,half_score,full_score,recommend_content,is_today_data,is_hit,match_date</sql>
+    <sql id="Base_Column_List">id,league_name,league_logo,home_name,home_logo,away_name,away_logo,half_score,full_score,result,recommend_content,is_today_data,is_hit,match_date</sql>
 </mapper>

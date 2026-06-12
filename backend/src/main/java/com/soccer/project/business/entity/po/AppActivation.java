@@ -9,24 +9,24 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@TableName(value ="t_half_full")
+@TableName(value = "t_app_activation")
 @Data
-public class HalfFull implements Serializable {
+public class AppActivation implements Serializable {
+
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String leagueName;
-    private String leagueLogo;
-    private String homeName;
-    private String homeLogo;
-    private String awayName;
-    private String awayLogo;
-    private String halfScore;
-    private String fullScore;
-    private String result;
-    private String recommendContent;
-    private Integer isTodayData;
-    private Integer isHit;
+
+    private String deviceId;
+
+    private Integer marketId;
+
+    private String packageId;
+
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime matchDate;
+    private LocalDateTime reportTime;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime createTime;
+
     private static final long serialVersionUID = 1L;
 }

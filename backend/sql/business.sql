@@ -439,4 +439,37 @@ CREATE TABLE `t_app_activation` (
   KEY `idx_report_time` (`report_time`) USING BTREE COMMENT '上报时间索引'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='App激活记录表';
 
+-- ----------------------------
+-- Table structure for t_banner
+-- ----------------------------
+DROP TABLE IF EXISTS `t_banner`;
+CREATE TABLE `t_banner` (
+  `id`          int          NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `title`       varchar(100) NOT NULL COMMENT '标题',
+  `image_url`   varchar(500) NOT NULL COMMENT '图片URL',
+  `sort_order`  int          NOT NULL DEFAULT 0 COMMENT '排序（升序）',
+  `jump_type`   tinyint      NOT NULL DEFAULT 1 COMMENT '跳转类型 1=弹窗HTML 2=客服',
+  `jump_content` longtext    NULL COMMENT '弹窗HTML内容（jump_type=1时使用）',
+  `status`      tinyint      NOT NULL DEFAULT 1 COMMENT '状态 0=禁用 1=启用',
+  `create_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  KEY `idx_sort` (`sort_order`, `status`) USING BTREE COMMENT '排序状态索引'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='轮播图表';
+
+-- ----------------------------
+-- Table structure for t_tab_guide
+-- ----------------------------
+DROP TABLE IF EXISTS `t_tab_guide`;
+CREATE TABLE `t_tab_guide` (
+  `id`          int          NOT NULL AUTO_INCREMENT COMMENT '主键自增',
+  `tab_key`     varchar(32)  NOT NULL COMMENT 'tab标识: home/analysis/score',
+  `image_url`   varchar(500) NOT NULL COMMENT '引导图片URL',
+  `status`      tinyint      NOT NULL DEFAULT 1 COMMENT '状态 0=禁用 1=启用',
+  `create_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` datetime     NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  PRIMARY KEY (`id`) USING BTREE,
+  UNIQUE KEY `uk_tab_key` (`tab_key`) USING BTREE COMMENT 'tab标识唯一'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Tab引导图配置表';
+
 SET FOREIGN_KEY_CHECKS = 1;

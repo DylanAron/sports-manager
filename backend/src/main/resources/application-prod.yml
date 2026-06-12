@@ -67,8 +67,8 @@ ruoyi:
   version: 3.8.9
   # 版权年份
   copyrightYear: 2025
-  # 文件路径（相对路径，在当前项目下的 upload 目录）
-  profile: ./images
+  # 文件路径（生产环境统一目录）
+  profile: /data/soccer/uploadPath
   # 获取ip地址开�?
   addressEnabled: false
   # 验证码类�?math 数字计算 char 字符验证
